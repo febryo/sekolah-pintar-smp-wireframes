@@ -52,7 +52,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onLogin }) => {
           
           <div className="space-y-2">
             <Label htmlFor="role">Masuk Sebagai</Label>
-            <div className="flex gap-4">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
               <div className="flex items-center">
                 <input
                   type="radio"
@@ -76,6 +76,18 @@ const AuthForm: React.FC<AuthFormProps> = ({ onLogin }) => {
                   className="mr-2"
                 />
                 <Label htmlFor="teacher" className="cursor-pointer">Guru</Label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  type="radio"
+                  id="tata-usaha"
+                  name="role"
+                  value="tata-usaha"
+                  checked={role === 'tata-usaha'}
+                  onChange={() => setRole('tata-usaha')}
+                  className="mr-2"
+                />
+                <Label htmlFor="tata-usaha" className="cursor-pointer">Tata Usaha</Label>
               </div>
             </div>
           </div>

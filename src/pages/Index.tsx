@@ -5,6 +5,7 @@ import { SidebarProvider } from '@/components/ui/sidebar';
 import AuthForm from '@/components/AuthForm';
 import AdminDashboard from '@/components/AdminDashboard';
 import TeacherDashboard from '@/components/TeacherDashboard';
+import TataUsahaDashboard from '@/components/TataUsahaDashboard';
 import StudentManagement from '@/components/StudentManagement';
 import ClassSchedule from '@/components/ClassSchedule';
 import Attendance from '@/components/Attendance';
@@ -17,19 +18,22 @@ import AnnouncementManagement from '@/components/AnnouncementManagement';
 
 const Index = () => {
   const [authenticated, setAuthenticated] = useState(false);
-  const [role, setRole] = useState<'admin' | 'teacher'>('admin');
+  const [role, setRole] = useState<'admin' | 'teacher' | 'tata-usaha'>('admin');
   const [activeView, setActiveView] = useState('dashboard');
   const { toast } = useToast();
 
   const handleLogin = (email: string, password: string, role: string) => {
     // In a real app, this would validate credentials against a backend
     setAuthenticated(true);
-    setRole(role as 'admin' | 'teacher');
+    setRole(role as 'admin' | 'teacher' | 'tata-usaha');
     setActiveView('dashboard');
     
     toast({
       title: "Login berhasil",
-      description: `Selamat datang, ${role === 'admin' ? 'Admin' : 'Guru'}!`,
+      description: `Selamat datang, ${
+        role === 'admin' ? 'Admin' : 
+        role === 'teacher' ? 'Guru' : 'Tata Usaha'
+      }!`,
     });
   };
 
@@ -45,7 +49,9 @@ const Index = () => {
   const renderActiveView = () => {
     switch (activeView) {
       case 'dashboard':
-        return role === 'admin' ? <AdminDashboard /> : <TeacherDashboard />;
+        return role === 'admin' ? <AdminDashboard /> : 
+               role === 'teacher' ? <TeacherDashboard /> : 
+               <TataUsahaDashboard />;
       case 'students':
         return <StudentManagement />;
       case 'schedule':
@@ -59,7 +65,9 @@ const Index = () => {
       case 'announcements':
         return <AnnouncementManagement />;
       default:
-        return role === 'admin' ? <AdminDashboard /> : <TeacherDashboard />;
+        return role === 'admin' ? <AdminDashboard /> : 
+               role === 'teacher' ? <TeacherDashboard /> : 
+               <TataUsahaDashboard />;
     }
   };
 
