@@ -58,20 +58,21 @@ const ClassSchedule = () => {
                 </Button>
               ))}
             </div>
-            <Select 
-              value={selectedDay}
-              onValueChange={setSelectedDay}
-              className="md:hidden"
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Pilih Hari" />
-              </SelectTrigger>
-              <SelectContent>
-                {days.map((day) => (
-                  <SelectItem key={day.value} value={day.value}>{day.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="md:hidden">
+              <Select 
+                value={selectedDay}
+                onValueChange={setSelectedDay}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Pilih Hari" />
+                </SelectTrigger>
+                <SelectContent>
+                  {days.map((day) => (
+                    <SelectItem key={day.value} value={day.value}>{day.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
           
           <div className="w-full sm:w-1/2">
