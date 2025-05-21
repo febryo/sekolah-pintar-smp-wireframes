@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Dialog
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from '@/components/ui/use-toast';
+import TambahSiswa from './TambahSiswa';
 
 const StudentManagement = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -142,6 +143,10 @@ const StudentManagement = () => {
     });
   };
 
+  const handleAddStudent = (newStudent) => {
+    setStudents([...students, newStudent]);
+  };
+
   return (
     <div className="space-y-6 pb-20 md:pb-0">
       <div className="flex justify-between items-center">
@@ -266,7 +271,7 @@ const StudentManagement = () => {
               </DialogFooter>
             </DialogContent>
           </Dialog>
-          <Button className="bg-sis-blue hover:bg-blue-700">+ Tambah Siswa</Button>
+          <TambahSiswa onAddStudent={handleAddStudent} />
         </div>
       </div>
 
@@ -326,7 +331,7 @@ const StudentManagement = () => {
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
-                <div className="text-sm">Menampilkan 1-5 dari 342 siswa</div>
+                <div className="text-sm">Menampilkan 1-{students.length} dari {students.length} siswa</div>
                 <div className="flex gap-2">
                   <Button variant="outline" size="sm" disabled>Sebelumnya</Button>
                   <Button variant="outline" size="sm">Selanjutnya</Button>
