@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Calendar, Clock, MessageSquare, User, Users } from 'lucide-react';
+import { Calendar, Clock, MessageSquare, User, Users, FileText, Bell } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface MobileNavigationProps {
@@ -16,11 +16,14 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ activeItem, role, o
     { id: 'students', label: 'Siswa', icon: <Users className="h-6 w-6" />, adminOnly: true },
     { id: 'attendance', label: 'Absensi', icon: <User className="h-6 w-6" /> },
     { id: 'messages', label: 'Pesan', icon: <MessageSquare className="h-6 w-6" /> },
+    { id: 'announcements', label: 'Pengumuman', icon: <Bell className="h-6 w-6" />, adminOnly: true },
+    { id: 'billing', label: 'Tagihan', icon: <FileText className="h-6 w-6" />, adminOnly: true },
   ];
 
+  // For mobile, let's limit to 5 items max to avoid overcrowding
   const filteredItems = role === 'admin' 
-    ? navItems 
-    : navItems.filter(item => !item.adminOnly);
+    ? navItems.slice(0, 5) 
+    : navItems.filter(item => !item.adminOnly).slice(0, 5);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 h-16 bg-white border-t border-gray-200 flex justify-around items-center px-2 md:hidden">

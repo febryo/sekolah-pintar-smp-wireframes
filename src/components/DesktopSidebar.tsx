@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Calendar, Clock, MessageSquare, User, Users } from 'lucide-react';
+import { Calendar, Clock, MessageSquare, User, Users, FileText, Bell } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { 
@@ -29,6 +29,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
     { id: 'students', label: 'Siswa', icon: <Users className="h-5 w-5" />, adminOnly: true },
     { id: 'attendance', label: 'Absensi', icon: <User className="h-5 w-5" /> },
     { id: 'messages', label: 'Pesan', icon: <MessageSquare className="h-5 w-5" /> },
+    { id: 'announcements', label: 'Pengumuman', icon: <Bell className="h-5 w-5" />, adminOnly: true },
+    { id: 'billing', label: 'Tagihan', icon: <FileText className="h-5 w-5" />, adminOnly: true },
   ];
 
   const filteredItems = role === 'admin' 

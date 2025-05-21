@@ -13,6 +13,7 @@ import Messages from '@/components/Messages';
 import MobileNavigation from '@/components/MobileNavigation';
 import DesktopSidebar from '@/components/DesktopSidebar';
 import { useToast } from '@/components/ui/use-toast';
+import AnnouncementManagement from '@/components/AnnouncementManagement';
 
 const Index = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -55,6 +56,8 @@ const Index = () => {
         return <Messages />;
       case 'billing':
         return <BillingInvoice />;
+      case 'announcements':
+        return <AnnouncementManagement />;
       default:
         return role === 'admin' ? <AdminDashboard /> : <TeacherDashboard />;
     }
