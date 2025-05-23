@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Calendar, Clock, User, Users, Bell, Receipt, CalendarDays } from 'lucide-react';
+import { Calendar, Clock, User, Users, Bell, Receipt, CalendarDays, BookOpen, UserCheck, Map } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { 
@@ -31,11 +31,15 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
     { id: 'billing', label: 'Tagihan', icon: <Receipt className="h-5 w-5" />, showFor: ['admin', 'tata-usaha'] },
     { id: 'announcements', label: 'Pengumuman', icon: <Bell className="h-5 w-5" />, hideFor: ['teacher', 'tata-usaha'] },
     { id: 'events', label: 'Kalender Acara', icon: <CalendarDays className="h-5 w-5" /> },
+    { id: 'master-teacher', label: 'Master Guru', icon: <UserCheck className="h-5 w-5" />, showFor: ['admin'] },
+    { id: 'master-subject', label: 'Master Mapel', icon: <BookOpen className="h-5 w-5" />, showFor: ['admin'] },
+    { id: 'teacher-subject-mapping', label: 'Pemetaan Guru-Mapel', icon: <Map className="h-5 w-5" />, showFor: ['admin'] },
   ];
 
   const filteredItems = navItems.filter(item => {
     if (item.showFor && item.showFor.includes(role)) return true;
     if (item.hideFor && item.hideFor.includes(role)) return false;
+    if (item.showFor && !item.showFor.includes(role)) return false;
     return true;
   });
 

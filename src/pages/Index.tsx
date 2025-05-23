@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { SidebarProvider } from '@/components/ui/sidebar';
@@ -14,6 +15,9 @@ import DesktopSidebar from '@/components/DesktopSidebar';
 import { useToast } from '@/components/ui/use-toast';
 import AnnouncementManagement from '@/components/AnnouncementManagement';
 import SchoolEvents from '@/components/SchoolEvents';
+import MasterTeacher from '@/components/MasterTeacher';
+import MasterSubject from '@/components/MasterSubject';
+import TeacherSubjectMapping from '@/components/TeacherSubjectMapping';
 
 const Index = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -63,6 +67,12 @@ const Index = () => {
         return <AnnouncementManagement />;
       case 'events':
         return <SchoolEvents />;
+      case 'master-teacher':
+        return <MasterTeacher />;
+      case 'master-subject':
+        return <MasterSubject />;
+      case 'teacher-subject-mapping':
+        return <TeacherSubjectMapping />;
       default:
         return role === 'admin' ? <AdminDashboard /> : 
                role === 'teacher' ? <TeacherDashboard /> : 
