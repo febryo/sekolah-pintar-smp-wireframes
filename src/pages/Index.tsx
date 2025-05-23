@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { SidebarProvider } from '@/components/ui/sidebar';
@@ -14,6 +13,7 @@ import MobileNavigation from '@/components/MobileNavigation';
 import DesktopSidebar from '@/components/DesktopSidebar';
 import { useToast } from '@/components/ui/use-toast';
 import AnnouncementManagement from '@/components/AnnouncementManagement';
+import SchoolEvents from '@/components/SchoolEvents';
 
 const Index = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -61,6 +61,8 @@ const Index = () => {
         return <BillingInvoice />;
       case 'announcements':
         return <AnnouncementManagement />;
+      case 'events':
+        return <SchoolEvents />;
       default:
         return role === 'admin' ? <AdminDashboard /> : 
                role === 'teacher' ? <TeacherDashboard /> : 
