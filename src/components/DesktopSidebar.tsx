@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Calendar, Clock, MessageSquare, User, Users, FileText, Bell, Receipt, FileCheck } from 'lucide-react';
+import { Calendar, Clock, User, Users, Bell, Receipt } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { 
@@ -29,7 +29,6 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
     { id: 'students', label: 'Siswa', icon: <Users className="h-5 w-5" />, hideFor: ['teacher'] },
     { id: 'attendance', label: 'Absensi', icon: <User className="h-5 w-5" />, hideFor: ['tata-usaha'] },
     { id: 'billing', label: 'Tagihan', icon: <Receipt className="h-5 w-5" />, showFor: ['admin', 'tata-usaha'] },
-    { id: 'messages', label: 'Pesan', icon: <MessageSquare className="h-5 w-5" /> },
     { id: 'announcements', label: 'Pengumuman', icon: <Bell className="h-5 w-5" />, hideFor: ['teacher', 'tata-usaha'] },
   ];
 

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Calendar, Clock, MessageSquare, User, Users, FileText, Bell, Receipt } from 'lucide-react';
+import { Calendar, Clock, User, Users, Bell, Receipt } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface MobileNavigationProps {
@@ -15,7 +15,6 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ activeItem, role, o
     { id: 'schedule', label: 'Jadwal', icon: <Calendar className="h-6 w-6" />, hideFor: ['tata-usaha'] },
     { id: 'students', label: 'Siswa', icon: <Users className="h-6 w-6" />, hideFor: ['teacher'] },
     { id: 'attendance', label: 'Absensi', icon: <User className="h-6 w-6" />, hideFor: ['tata-usaha'] },
-    { id: 'messages', label: 'Pesan', icon: <MessageSquare className="h-6 w-6" /> },
     { id: 'billing', label: 'Tagihan', icon: <Receipt className="h-6 w-6" />, showFor: ['admin', 'tata-usaha'] },
     { id: 'announcements', label: 'Pengumuman', icon: <Bell className="h-6 w-6" />, hideFor: ['teacher', 'tata-usaha'] },
   ];

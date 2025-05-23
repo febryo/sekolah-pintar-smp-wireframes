@@ -10,7 +10,6 @@ import StudentManagement from '@/components/StudentManagement';
 import ClassSchedule from '@/components/ClassSchedule';
 import Attendance from '@/components/Attendance';
 import BillingInvoice from '@/components/BillingInvoice';
-import Messages from '@/components/Messages';
 import MobileNavigation from '@/components/MobileNavigation';
 import DesktopSidebar from '@/components/DesktopSidebar';
 import { useToast } from '@/components/ui/use-toast';
@@ -58,8 +57,6 @@ const Index = () => {
         return <ClassSchedule />;
       case 'attendance':
         return <Attendance />;
-      case 'messages':
-        return <Messages />;
       case 'billing':
         return <BillingInvoice />;
       case 'announcements':
