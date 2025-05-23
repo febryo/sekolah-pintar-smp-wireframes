@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +7,7 @@ import TambahSiswa from './TambahSiswa';
 import StudentDetail from './StudentDetail';
 
 const StudentManagement = () => {
-  const [view, setView] = useState<'list' | 'add' | 'detail'>('list');
+  const [view, setView] = useState<'list' | 'detail'>('list');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedClass, setSelectedClass] = useState('all');
   const [selectedStudent, setSelectedStudent] = useState<any>(null);
@@ -68,7 +67,6 @@ const StudentManagement = () => {
   const handleAddStudent = (newStudent) => {
     const id = students.length > 0 ? Math.max(...students.map(s => s.id)) + 1 : 1;
     setStudents([...students, { ...newStudent, id }]);
-    setView('list');
   };
 
   const handleSaveStudent = (updatedStudent) => {
@@ -96,10 +94,6 @@ const StudentManagement = () => {
     return matchesQuery && matchesClass;
   });
 
-  if (view === 'add') {
-    return <TambahSiswa onSave={handleAddStudent} onCancel={() => setView('list')} />;
-  }
-
   if (view === 'detail' && selectedStudent) {
     return (
       <StudentDetail
@@ -117,10 +111,7 @@ const StudentManagement = () => {
           <h1 className="text-2xl font-bold mb-1">Daftar Siswa</h1>
           <p className="text-muted-foreground">Kelola data siswa sekolah</p>
         </div>
-        <Button onClick={() => setView('add')} className="md:w-auto w-full">
-          <Plus className="mr-2 h-4 w-4" />
-          Tambah Siswa
-        </Button>
+        <TambahSiswa onAddStudent={handleAddStudent} />
       </div>
 
       <div className="grid md:grid-cols-3 gap-4">
