@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Calendar, Clock, User, Users, Bell, Receipt } from 'lucide-react';
+import { Calendar, Clock, User, Users, Bell, Receipt, CalendarDays } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { 
@@ -30,6 +30,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
     { id: 'attendance', label: 'Absensi', icon: <User className="h-5 w-5" />, hideFor: ['tata-usaha'] },
     { id: 'billing', label: 'Tagihan', icon: <Receipt className="h-5 w-5" />, showFor: ['admin', 'tata-usaha'] },
     { id: 'announcements', label: 'Pengumuman', icon: <Bell className="h-5 w-5" />, hideFor: ['teacher', 'tata-usaha'] },
+    { id: 'events', label: 'Kalender Acara', icon: <CalendarDays className="h-5 w-5" /> },
   ];
 
   const filteredItems = navItems.filter(item => {

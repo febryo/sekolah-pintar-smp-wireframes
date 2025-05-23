@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Calendar, Clock, User, Users, Bell, Receipt } from 'lucide-react';
+import { Calendar, Clock, User, Users, Bell, Receipt, CalendarDays } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface MobileNavigationProps {
@@ -17,6 +17,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ activeItem, role, o
     { id: 'attendance', label: 'Absensi', icon: <User className="h-6 w-6" />, hideFor: ['tata-usaha'] },
     { id: 'billing', label: 'Tagihan', icon: <Receipt className="h-6 w-6" />, showFor: ['admin', 'tata-usaha'] },
     { id: 'announcements', label: 'Pengumuman', icon: <Bell className="h-6 w-6" />, hideFor: ['teacher', 'tata-usaha'] },
+    { id: 'events', label: 'Acara', icon: <CalendarDays className="h-6 w-6" /> },
   ];
 
   // Filter items based on role
